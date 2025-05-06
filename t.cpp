@@ -1,14 +1,14 @@
 #include <iostream>
-#include <stdlib.h>
-#include <time.h>
+#include <string>
 
 using namespace std;
 
-int main()
+int	main()
 {
-	string	s;
+	string	aid;
 
-	s = "Hhhhhh";
-	cout << s << endl;
-	return 0;
+	cout << "Type: ";
+	getline(cin, aid);
+	cout << "Type: ";
+	cout << "the Input " << aid << endl;
 }
