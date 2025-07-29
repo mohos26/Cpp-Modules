@@ -7,11 +7,19 @@ static bool	hasNumber(std::string s)
 		s = s.substr(1);
 	if (!s.length())
 		return false;
-	for (int i=0; i < s.length(); i++)
+	for (size_t i = 0; i < s.length(); i++)
 	{
 		if (!std::isdigit(s[i]))
 			return false;
 	}
+	return true;
+}
+
+static bool	hasNoPrintable(std::string s)
+{
+	for (size_t i = 0; i < s.length(); i++)
+		if (!std::isprint(s[i]))
+			return false;
 	return true;
 }
 
@@ -25,7 +33,7 @@ static std::string	aidFt(std::string prompt, bool number_check)
 		if (!std::getline(std::cin, res))
 			Exit();
 		res = strip(res);
-		if (!res.empty() && ((number_check && hasNumber(res)) || !number_check))
+		if (!res.empty() && hasNoPrintable(res) && ((number_check && hasNumber(res)) || !number_check))
 			break;
 		std::cout << "Invalid" << std::endl;
 	}

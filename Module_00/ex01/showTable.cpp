@@ -43,10 +43,10 @@ void	showTable(PhoneBook table)
 		std::cout << "No Contact To Show It!" << std::endl;
 		return ;
 	}
-	std::cout << std::setfill(' ') << std::setw(10) << "index" << "|";
-	std::cout << std::setw(10) << "first name" << "|";
-	std::cout << std::setw(10) << "last name" << "|";
-	std::cout << std::setw(10) << "nickname" << "|" << std::endl;
+	std::cout << std::setfill(' ') << "   Index  " << "|";
+	std::cout << std::setw(10) << "First Name" << "|";
+	std::cout << std::setw(10) << "Last Name" << "|";
+	std::cout << " Nickname " << "|" << std::endl;
 	for (int i = 0; i < table.getLength(); i++)
 	{
 		aid = table.getContact(i);
