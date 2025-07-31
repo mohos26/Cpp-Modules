@@ -1,14 +1,19 @@
 #include <iostream>
 #include <string>
+#include <ctime>
+
 
 using namespace std;
 
 int	main()
 {
-	string	aid;
+	time_t timestamp = time(&timestamp);
+	struct tm datetime = *localtime(&timestamp);
 
-	cout << "Type: ";
-	getline(cin, aid);
-	cout << "Type: ";
-	cout << "the Input " << aid << endl;
+	cout << ctime(&timestamp);
+	cout << datetime.tm_sec << endl;
+	cout << datetime.tm_min << endl;
+	cout << datetime.tm_hour << endl;
+	cout << datetime.tm_mday << endl;
+	cout << datetime.tm_mon << endl;
 }
