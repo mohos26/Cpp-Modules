@@ -7,11 +7,12 @@
 class Contact
 {
 	private:
-		std::string	first_name;
-		std::string	last_name;
+		// Contact info
+		std::string	firstName;
+		std::string	lastName;
 		std::string	nickname;
 		std::string	number;
-		std::string	darkest_secret;
+		std::string	darkestSecret;
 	public:
 		// getters
 		std::string	getFirstName(void);
@@ -20,11 +21,11 @@ class Contact
 		std::string	getNumber(void);
 		std::string	getDarkestSecret(void);
 		// setters
-		void	setFirstName(std::string first_name);
-		void	setLastName(std::string last_name);
+		void	setFirstName(std::string firstName);
+		void	setLastName(std::string lastName);
 		void	setNickname(std::string nickname);
 		void	setNumber(std::string number);
-		void	setDarkestSecret(std::string darkest_secret);
+		void	setDarkestSecret(std::string darkestSecret);
 };
 
 #endif

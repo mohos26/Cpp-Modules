@@ -1,14 +1,16 @@
 #include "header.hpp"
 
 
-static std::string	aidFt2(std::string s)
+// Format field to max 10 chars with a trailing dot
+static std::string	formatColumnField(std::string s)
 {
 	if (s.length() > 10)
 		return s.substr(0, 9) + ".";
 	return s;
 }
 
-static int	aidFt3(int length)
+// Get a valid index from user
+static int	readIndexInput(int length)
 {
 	int			res;
 	std::string	s;
@@ -17,7 +19,7 @@ static int	aidFt3(int length)
 	{
 		std::cout << "Index: ";
 		if (!getline(std::cin, s))
-			Exit();
+			ftExit();
 		s = strip(s);
 		while (s[0] == ' ')
 			s = s.substr(1);
@@ -34,6 +36,7 @@ static int	aidFt3(int length)
 	return res;
 }
 
+// Print contact list, and show selected contact in full
 void	showTable(PhoneBook table)
 {
 	Contact	aid;
@@ -51,11 +54,11 @@ void	showTable(PhoneBook table)
 	{
 		aid = table.getContact(i);
 		std::cout << std::setw(10) << i << "|";
-		std::cout << std::setw(10) << aidFt2(aid.getFirstName()) << "|";
-		std::cout << std::setw(10) << aidFt2(aid.getLastName()) << "|";
-		std::cout << std::setw(10) << aidFt2(aid.getNickname()) << "|" << std::endl;
+		std::cout << std::setw(10) << formatColumnField(aid.getFirstName()) << "|";
+		std::cout << std::setw(10) << formatColumnField(aid.getLastName()) << "|";
+		std::cout << std::setw(10) << formatColumnField(aid.getNickname()) << "|" << std::endl;
 	}
-	aid = table.getContact(aidFt3(table.getLength()));
+	aid = table.getContact(readIndexInput(table.getLength()));
 	std::cout << "First Name: " << aid.getFirstName() << std::endl;
 	std::cout << "Last Name: " << aid.getLastName() << std::endl;
 	std::cout << "Nickname: " << aid.getNickname() << std::endl;

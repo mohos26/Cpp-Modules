@@ -4,12 +4,13 @@
 #include <ctime>
 
 
-// check is unsed
+// Static member initialization
 int	Account::_nbAccounts = 0;
 int	Account::_totalAmount = 0;
 int	Account::_totalNbDeposits = 0;
 int	Account::_totalNbWithdrawals = 0;
 
+// Constructor: initialize account and log creation
 Account::Account(int initial_deposit)
 {
 	_accountIndex = _nbAccounts++;
@@ -22,6 +23,7 @@ Account::Account(int initial_deposit)
 	_totalAmount += initial_deposit;
 }
 
+// Destructor: log account closure and update stats
 Account::~Account(void)
 {
 	_displayTimestamp();
@@ -32,7 +34,7 @@ Account::~Account(void)
 	_nbAccounts--;
 	_totalAmount -= _amount;
 }
-
+// getters
 int	Account::getNbAccounts(void)
 {
 	return _nbAccounts;
@@ -45,16 +47,15 @@ int	Account::getTotalAmount(void)
 
 int	Account::getNbDeposits(void)
 {
-	// return _nbDeposits; // I don't now any one should use
 	return _totalNbDeposits;
 }
 
 int	Account::getNbWithdrawals(void)
 {
-	// return _totalNbWithdrawals; // I don't now any one should use
 	return _totalNbWithdrawals;
 }
 
+// Display timestamp in [YYYYMMDD_HHMMSS] format
 void	Account::_displayTimestamp(void)
 {
 	time_t timestamp = time(&timestamp);
@@ -68,6 +69,7 @@ void	Account::_displayTimestamp(void)
 	std::cout << std::setw(2) << datetime.tm_sec << "] ";
 }
 
+// Display summary of all accounts
 void	Account::displayAccountsInfos(void)
 {
 	if (!_nbAccounts)
@@ -79,7 +81,7 @@ void	Account::displayAccountsInfos(void)
 	std::cout << ";withdrawals:" << _totalNbWithdrawals << std::endl;
 }
 
-// [19920104_091532] index:0;amount:42;deposits:0;withdrawals:0
+// Display info about this account
 void	Account::displayStatus(void) const
 {
 	if (!_nbAccounts)
@@ -91,7 +93,7 @@ void	Account::displayStatus(void) const
 	std::cout << ";withdrawals:" << _nbWithdrawals << std::endl;
 }
 
-// [19920104_091532] index:0;p_amount:42;deposit:5;amount:47;nb_deposits:1
+// Deposit money and update stats
 void	Account::makeDeposit(int deposit)
 {
 	_displayTimestamp();
@@ -106,15 +108,13 @@ void	Account::makeDeposit(int deposit)
 				<< ";nb_deposits:" << _nbDeposits << std::endl;
 }
 
-// [19920104_091532] index:1;p_amount:819;withdrawal:34;amount:785;nb_withdrawals:1
+// Withdraw money if possible, update stats and return success
 bool	Account::makeWithdrawal(int withdrawal)
 {
-	int	aid;
-
 	_displayTimestamp();
 	std::cout	<< "index:" << _accountIndex
 				<< ";p_amount:" << _amount;
-	aid = _amount - withdrawal;
+	int aid = _amount - withdrawal;
 	if (aid < 0)
 	{
 		std::cout << ";withdrawal:refused" << std::endl;
@@ -129,6 +129,7 @@ bool	Account::makeWithdrawal(int withdrawal)
 	return true;
 }
 
+// Return current amount in the account
 int	Account::checkAmount(void) const
 {
 	return _amount;

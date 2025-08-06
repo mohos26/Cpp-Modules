@@ -1,26 +1,34 @@
 # include "PhoneBook.hpp"
 # include "Contact.hpp"
 
+// Init phonebook
+PhoneBook::PhoneBook()
+{
+	length = 0;
+	count = 0;
+}
+
 Contact	PhoneBook::getContact(int i)
 {
-	return PhoneBook::lst[i];
+	return lst[i];
 }
 
 Contact	*PhoneBook::getAllContact(void)
 {
-	return PhoneBook::lst;
+	return lst;
 }
 
 int		PhoneBook::getLength(void)
 {
-	return PhoneBook::length;
+	return length;
 }
 
+// Add new contact in circular buffer style (max 8)
 void	PhoneBook::addContact(Contact user)
 {
-	PhoneBook::lst[PhoneBook::count] = user;
-	if (PhoneBook::length != 8)
-		PhoneBook::length++;
-	PhoneBook::count++;
-	PhoneBook::count %= 8;
+	lst[count] = user;
+	if (length != 8)
+		length++;
+	count++;
+	count %= 8; // loop index
 }

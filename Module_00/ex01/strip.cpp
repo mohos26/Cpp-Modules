@@ -1,6 +1,7 @@
 #include "header.hpp"
 
 
+// Trim leading and trailing spaces
 std::string	strip(std::string s)
 {
 	size_t	start = 0;

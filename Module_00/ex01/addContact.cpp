@@ -1,6 +1,7 @@
 #include "header.hpp"
 
 
+// Check if string contains only digits (allow leading '+')
 static bool	hasNumber(std::string s)
 {
 	if (s[0] == '+')
@@ -15,6 +16,7 @@ static bool	hasNumber(std::string s)
 	return true;
 }
 
+// Check if all characters are printable
 static bool	hasNoPrintable(std::string s)
 {
 	for (size_t i = 0; i < s.length(); i++)
@@ -23,7 +25,8 @@ static bool	hasNoPrintable(std::string s)
 	return true;
 }
 
-static std::string	aidFt(std::string prompt, bool number_check)
+// Input helper: prompt until valid input
+static std::string	promptInput(std::string prompt, bool number_check)
 {
 	std::string	res;
 
@@ -31,7 +34,7 @@ static std::string	aidFt(std::string prompt, bool number_check)
 	{
 		std::cout << prompt << ": ";
 		if (!std::getline(std::cin, res))
-			Exit();
+			ftExit();
 		res = strip(res);
 		if (!res.empty() && hasNoPrintable(res) && ((number_check && hasNumber(res)) || !number_check))
 			break;
@@ -40,15 +43,16 @@ static std::string	aidFt(std::string prompt, bool number_check)
 	return res;
 }
 
+// Main function: create and store a contact
 void	addContact(PhoneBook &table)
 {
 	std::string	s;
 	Contact		tmp;
 
-	tmp.setFirstName(aidFt("first name", false));
-	tmp.setLastName(aidFt("last name", false));
-	tmp.setNickname(aidFt("nickname", false));
-	tmp.setNumber(aidFt("phone number", true));
-	tmp.setDarkestSecret(aidFt("darkest secret", false));
+	tmp.setFirstName(promptInput("first name", false));
+	tmp.setLastName(promptInput("last name", false));
+	tmp.setNickname(promptInput("nickname", false));
+	tmp.setNumber(promptInput("phone number", true));
+	tmp.setDarkestSecret(promptInput("darkest secret", false));
 	table.addContact(tmp);
 }

@@ -1,10 +1,10 @@
-NAME = PhoneBook
+NAME = GlobalBanksters
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = Contact.cpp ftExit.cpp PhoneBook.cpp addContact.cpp main.cpp showTable.cpp strip.cpp
+SRCS = Account.cpp tests.cpp
 
-INCLUDES = PhoneBook.hpp Contact.hpp header.hpp
+INCLUDES = Account.hpp
 
 OBJS = ${SRCS:.cpp=.o}
 

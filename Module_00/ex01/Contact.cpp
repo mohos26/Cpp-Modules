@@ -3,51 +3,51 @@
 // getters
 std::string Contact::getFirstName(void)
 {
-	return Contact::first_name;
+	return firstName;
 }
 
 std::string	Contact::getLastName(void)
 {
-	return Contact::last_name;
+	return lastName;
 }
 
 std::string	Contact::getNickname(void)
 {
-	return Contact::nickname;
+	return nickname;
 }
 
 std::string	Contact::getNumber(void)
 {
-	return Contact::number;
+	return number;
 }
 
 std::string	Contact::getDarkestSecret(void)
 {
-	return Contact::darkest_secret;
+	return darkestSecret;
 }
 
 // setters
-void	Contact::setFirstName(std::string first_name)
+void	Contact::setFirstName(std::string firstName)
 {
-	Contact::first_name = first_name;
+	this->firstName = firstName;
 }
 
-void	Contact::setLastName(std::string last_name)
+void	Contact::setLastName(std::string lastName)
 {
-	Contact::last_name = last_name;
+	this->lastName = lastName;
 }
 
 void	Contact::setNickname(std::string nickname)
 {
-	Contact::nickname = nickname;
+	this->nickname = nickname;
 }
 
 void	Contact::setNumber(std::string number)
 {
-	Contact::number = number;
+	this->number = number;
 }
 
-void	Contact::setDarkestSecret(std::string darkest_secret)
+void	Contact::setDarkestSecret(std::string darkestSecret)
 {
-	Contact::darkest_secret = darkest_secret;
+	this->darkestSecret = darkestSecret;
 }

@@ -10,6 +10,6 @@
 void		addContact(PhoneBook &table);
 void		showTable(PhoneBook table);
 std::string	strip(std::string s);
-void		Exit(void);
+void		ftExit(void);
 
 #endif

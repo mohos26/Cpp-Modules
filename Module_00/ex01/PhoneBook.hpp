@@ -7,15 +7,12 @@
 class PhoneBook
 {
 	private:
-		Contact	lst[8];
-		int		length;
-		int		count;
+		Contact	lst[8]; // stores 8 contacts max
+		int		length; // number of stored contacts
+		int		count;  // index for circular overwrite
 	public:
 		// Constructor
-		PhoneBook() {
-			length = 0;
-			count = 0;
-		}
+		PhoneBook();
 		Contact	getContact(int i);
 		Contact	*getAllContact(void);
 		int		getLength(void);
