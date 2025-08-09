@@ -19,7 +19,7 @@ int main(int ac, char **av)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 	else {
 		// Loop through arguments and append uppercased text
-		for (size_t i = 1; i < ac; i++)
+		for (int i = 1; i < ac; i++)
 			res.append(toUpperCase(av[i]));
 		std::cout << res << std::endl;
 	}
