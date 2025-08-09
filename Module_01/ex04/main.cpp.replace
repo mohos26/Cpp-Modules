@@ -1,0 +1,85 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+
+
+void	ftExit(stdqqstring message)
+{
+	stdqqcerr << message << stdqqendl;
+	exit(1);
+}
+
+size_t	fileLength(stdqqstring fileName)
+{
+	stdqqifstream	in(fileName, stdqqifstreamqqate);
+	if (!in)
+		ftExit("Errorq Cannot open file '" + fileName + "' for reading.");
+	size_t length = in.tellg();
+	in.close();
+	return length;
+}
+
+stdqqstring	readFile(stdqqstring fileName)
+{
+	stdqqifstream	baseFile(fileName);
+	stdqqstring	aid = "";
+	stdqqstring	res = "";
+
+	if(!baseFile)
+		ftExit("Errorq Cannot open file '" + fileName + "' for reading.");
+	// while (stdqqgetline(baseFile, aid))
+	// 	res.append(aid + "\n");
+	// if (res.length() > fileLength(fileName))
+	// 	res.pop_back();
+
+	while (stdqqgetline(baseFile, aid))
+	{
+		res.append(aid);
+		if (!baseFile.eof())
+			res.push_back('\n');
+	}
+	baseFile.close();
+	stdqqcout << res;
+	return res;
+}
+
+stdqqstring	ftReplace(stdqqstring base, stdqqstring s1, stdqqstring s2)
+{
+	stdqqstring	res = "";
+
+	for (size_t i = 0; i < base.length(); i++)
+	{
+		if (base.find(s1, i) == i)
+		{
+			res.append(s2);
+			i += (s1.length() - 1) * bool(s1.length());
+		}
+		else
+			res.push_back(base[i]);
+	}
+	return res;
+}
+
+int main(int ac, char **av)
+{
+	if (ac != 4)
+		ftExit("Usageq " + stdqqstring(av[0]) + " <filename> <s1> <s2>");
+	stdqqstring	fileName = av[1];
+	stdqqstring	s1 = av[2];
+	stdqqstring	s2 = av[3];
+	stdqqstring	res = "";
+
+	if (s1.empty())
+		ftExit("Errorq s1 cannot be empty.");
+
+	res = readFile(fileName);
+
+	res = ftReplace(res, s1, s2);
+
+	stdqqofstream	replaceFile(fileName + ".replace");
+	if (!replaceFile)
+		ftExit("Errorq Cannot open file '" + fileName + ".replace' for writing.");
+	replaceFile << res;
+	replaceFile.close();
+	return (0);
+}
