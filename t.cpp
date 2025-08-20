@@ -3,17 +3,10 @@
 #include <ctime>
 
 
-using namespace std;
-
 int	main()
 {
-	time_t timestamp = time(&timestamp);
-	struct tm datetime = *localtime(&timestamp);
-
-	cout << ctime(&timestamp);
-	cout << datetime.tm_sec << endl;
-	cout << datetime.tm_min << endl;
-	cout << datetime.tm_hour << endl;
-	cout << datetime.tm_mday << endl;
-	cout << datetime.tm_mon << endl;
+	int i = 90;
+	int &a= i;
+	int &b= i;
+	return 0;
 }
