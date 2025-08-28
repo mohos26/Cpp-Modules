@@ -1,14 +1,12 @@
-NAME = Harl
-
-SRCS = Harl.cpp main.cpp
-
-INCLUDES = Harl.hpp
+NAME = brain
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
+SRCS = main.cpp
+
 OBJS = ${SRCS:.cpp=.o}
 
-%.o: %.cpp $(INCLUDES)
+%.o: %.cpp
 	c++ $(FLAGS) -c $< -o $@
 
 all: $(NAME)

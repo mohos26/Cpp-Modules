@@ -27,6 +27,7 @@ int main(int ac, char **av)
 			harl.warning();
 		case 3:
 			harl.error();
+			break;
 		default:
 			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 			break;

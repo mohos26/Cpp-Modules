@@ -192,16 +192,96 @@ Use static to store state between function calls.
 
 Use extern when splitting your program into multiple files.
 -------------------------------------------------------------------------------------------------------------------
+C++ provides two standard mechanisms to check if the allocation was successful:
+
+foo = new int [5];  // if allocation fails, an exception is thrown
+
+
+The other method is known as nothrow, and what happens when it is used is that when a memory allocation fails, instead of throwing a bad_alloc exception or terminating the program, the pointer returned by new is a null pointer, and the program continues its execution normally.
+
+This method can be specified by using a special object called nothrow, declared in header <new>, as argument for new:
+
+foo = new (nothrow) int [5];
+
+
+In this case, if the allocation of this block of memory fails, the failure can be detected by checking if foo is a null pointer:
+
+int * foo;
+foo = new (nothrow) int [5];
+if (foo == nullptr) {
+  // error assigning memory. Take measures.
+}
 -------------------------------------------------------------------------------------------------------------------
+اقترح المهندس البرمجي الشهير، روبرت سي. مارتن، المعروف بلقب "العم بوب"، أن هناك ثلاثة أنماط برمجة أساسية تشكل قاعدة تطوير البرمجيات:
+
+البرمجة الهيكلية
+
+البرمجة الدالية (Functional)
+
+البرمجة الكائنية التوجه (OOP)
+
+ويشير العم بوب إلى أن أي نمط برمجي جديد سيقدم قيودًا جديدة، تمامًا كما تفعل الأنماط الثلاثة الحالية. واستنادًا إلى التاريخ، لم يظهر أي نمط جديد خلال نصف القرن الماضي، مما يدعم وجهة نظره بأن هذه الأنماط الثلاثة هي الأهم على الإطلاق.
 -------------------------------------------------------------------------------------------------------------------
+ألان كاي، مبتكر مفهوم OOP، حدد سببين رئيسيين لتطويره:
+
+البحث عن هياكل وحدات أفضل للأنظمة المعقدة (مع إخفاء التفاصيل)
+
+الرغبة في تطوير نسخ أكثر مرونة من التعيينات
 -------------------------------------------------------------------------------------------------------------------
+المفاهيم الأربعة الأساسية في OOP:
+
+التغليف (Encapsulation): إخفاء بيانات الكائن والوصول إليها عبر الدوال فقط.
+
+الوراثة (Inheritance): السماح لفئة باكتساب خصائص وسلوكيات فئة أخرى.
+
+التجريد (Abstraction): إخفاء التفاصيل غير الضرورية لتقليل التعقيد.
+
+تعدد الأشكال (Polymorphism): نفس الدالة تتصرف بشكل مختلف حسب نوع الكائن.
 -------------------------------------------------------------------------------------------------------------------
+In 1965, Hoare had introduced ‘null’ in the ALGOL W language. In retrospect, Hoare has since referred to the ‘null’ pointer as his “billion-dollar mistake” and has expressed regret for introducing this feature.
 -------------------------------------------------------------------------------------------------------------------
+الفئات تحتوي على محددات وصول لتحديد من يمكنه الوصول للأعضاء:
+
+private: الأعضاء خاصة، يمكن الوصول إليها فقط من داخل الفئة أو من أصدقاء الفئة (friends).
+
+protected: الأعضاء محمية، يمكن الوصول إليها من داخل الفئة وأعضاء الفئات المشتقة.
+
+public: الأعضاء عامة، يمكن الوصول إليها من أي مكان يظهر فيه الكائن.
+
+افتراضيًا، كل الأعضاء في فئة معرفة بـ class تكون private إذا لم يُذكر خلاف ذلك.
 -------------------------------------------------------------------------------------------------------------------
+لتجنب حالات عدم التهيئة:
+
+المنشئ (Constructor): دالة خاصة بالفئة تُستدعى تلقائيًا عند إنشاء الكائن.
+
+اسم المنشئ يجب أن يطابق اسم الفئة ولا يحتوي على نوع عائد.
 -------------------------------------------------------------------------------------------------------------------
+Constructors
+
+A constructor is a special member function that is automatically called after a non-aggregate class type object is created.
+
+If an accessible matching constructor is found, memory for the object is allocated, and then the constructor function is called.
+If no accessible matching constructor can be found, a compilation error will be generated.
 -------------------------------------------------------------------------------------------------------------------
+std is the namespace of the C++ Standard Library.
+
+It contains almost everything in standard C++: streams, containers, algorithms, utilities, smart pointers, strings, exceptions, and more.
+
+Using std ensures no name collisions with your own code.
 -------------------------------------------------------------------------------------------------------------------
+What is :: ?
+
+:: is called the 'Scope Resolution Operator'.
+
+It allows access to elements (variables, functions, objects…) that exist inside a namespace, class/struct, or in the global scope.
 -------------------------------------------------------------------------------------------------------------------
+What is 'this'?
+
+'this' is a hidden pointer that exists inside every object of a class in C++.
+
+Its purpose is to point to the current object that the member function is working on.
+
+In other words: when you call a member function on an object, 'this' represents the memory address of that object.
 -------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------

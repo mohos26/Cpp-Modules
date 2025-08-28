@@ -1,14 +1,12 @@
-NAME = Harl
-
-SRCS = Harl.cpp main.cpp
-
-INCLUDES = Harl.hpp
+NAME = zombie
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
+SRCS = main.cpp newZombie.cpp randomChump.cpp
+
 OBJS = ${SRCS:.cpp=.o}
 
-%.o: %.cpp $(INCLUDES)
+%.o: %.cpp Zombie.hpp
 	c++ $(FLAGS) -c $< -o $@
 
 all: $(NAME)

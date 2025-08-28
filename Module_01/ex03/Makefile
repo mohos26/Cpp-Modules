@@ -1,10 +1,10 @@
-NAME = Harl
-
-SRCS = Harl.cpp main.cpp
-
-INCLUDES = Harl.hpp
+NAME = Weapon
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
+
+SRCS = HumanA.cpp HumanB.cpp Weapon.cpp main.cpp
+
+INCLUDES = HumanA.hpp HumanB.hpp Weapon.hpp
 
 OBJS = ${SRCS:.cpp=.o}
 

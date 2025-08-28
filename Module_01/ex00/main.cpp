@@ -9,6 +9,6 @@ int	main()
 	randomChump("ahmed");
 	randomChump("bochraybe");
 	ptr->announce();
-	// delete ptr;
+	delete ptr;
 	return 0;
 }
