@@ -5,18 +5,22 @@ int main(int ac, char **av)
 {
 	Harl		harl;
 	std::string	lst[] = {"debug", "info", "warning", "error"};
-	int			res = -1;
+	int			res = -1; // default: not found
 
 	if (ac != 2)
 	{
 		std::cerr << "error" << std::endl;
 		return 1;
 	}
+
+	// find index of input level
 	for (int i = 0; i < 4; i++)
 	{
 		if (lst[i] == std::string(av[1]))
 			res = i;
 	}
+
+	// execute all messages from selected level upwards
 	switch (res)
 	{
 		case 0:

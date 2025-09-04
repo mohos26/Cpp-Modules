@@ -1,6 +1,8 @@
 #include "Zombie.hpp"
 #include <new>
 
+
+// create N zombies on heap
 Zombie*	zombieHorde(int N, std::string name)
 {
 	Zombie	*lst;

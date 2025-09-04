@@ -9,11 +9,9 @@
 class HumanB
 {
 	public:
-		HumanB();
 		HumanB(std::string name);
 
-		void		setWeapon(Weapon weapon);
-		Weapon		*getWeapon(void);
+		void		setWeapon(Weapon &weapon);
 		void		setName(std::string name);
 		std::string	getName(void);
 		void		attack(void);

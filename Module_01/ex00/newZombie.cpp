@@ -4,6 +4,7 @@
 #include <new>
 
 
+// create zombie on heap
 Zombie* newZombie(std::string name)
 {
 	Zombie	*zombie;
@@ -14,6 +15,5 @@ Zombie* newZombie(std::string name)
 		std::cerr << "Cannot Allocate Memory" << std::endl;
 		exit(1);
 	}
-	// zombie->announce();
 	return zombie;
 }

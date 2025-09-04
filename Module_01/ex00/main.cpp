@@ -3,12 +3,12 @@
 
 int	main()
 {
-	Zombie	*ptr;
+	Zombie	*zombiePtr;
 
-	ptr = newZombie("saaid");
+	zombiePtr = newZombie("saaid");
 	randomChump("ahmed");
 	randomChump("bochraybe");
-	ptr->announce();
-	delete ptr;
+	zombiePtr->announce();
+	delete zombiePtr;
 	return 0;
 }

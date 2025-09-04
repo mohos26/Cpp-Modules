@@ -13,5 +13,6 @@ class Zombie
 		std::string	name;
 };
 
+// helper functions
 Zombie*	newZombie(std::string name);
 void	randomChump(std::string name);

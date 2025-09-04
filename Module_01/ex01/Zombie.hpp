@@ -6,7 +6,6 @@ class Zombie
 {
 	public:
 		Zombie();
-		Zombie(std::string name);
 
 		void	announce(void);
 		void	setName(std::string name);
@@ -16,5 +15,5 @@ class Zombie
 		std::string	name;
 };
 
+// create a horde of zombies
 Zombie*	zombieHorde(int N, std::string name);
-
