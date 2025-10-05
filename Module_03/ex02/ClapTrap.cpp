@@ -18,7 +18,7 @@ ClapTrap::ClapTrap(ClapTrap &other) {
 }
 
 ClapTrap&	ClapTrap::operator=(ClapTrap &other) {
-	if (&other != this)
+	if (this != &other)
 	{
 		name = other.getName();
 		hitPoints = other.getHitPoints();
