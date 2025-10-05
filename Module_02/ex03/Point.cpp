@@ -22,13 +22,14 @@ Point::Point(Point &other) {
 Point&	Point::operator=(const Point &other) {
 	x = other.x;
 	y = other.y;
+	return *this;
 }
 
-Fixed	Point::getX(void) {
+Fixed	Point::getX(void) const{
 	return x;
 }
 
-Fixed	Point::getY(void) {
+Fixed	Point::getY(void) const{
 	return y;
 }
 
