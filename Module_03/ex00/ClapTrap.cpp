@@ -6,23 +6,27 @@ ClapTrap::ClapTrap(std::string name) {
 	hitPoints = 10;
 	energyPoints = 10;
 	attackDamage = 0;
-	std::cout << "ClapTrap " << name << " are created!" << std::endl;
+	std::cout << "ClapTrap " << name << " is created!" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap &other) {
-	this->name = other.getName();
-	this->hitPoints = other.getHitPoints();
-	this->energyPoints = other.getEnergyPoints();
-	this->attackDamage = other.getAttackDamage();
-	std::cout << "ClapTrap " << name << " are copied!" << std::endl;
+	name = other.getName();
+	hitPoints = other.getHitPoints();
+	energyPoints = other.getEnergyPoints();
+	attackDamage = other.getAttackDamage();
+	std::cout << "ClapTrap " << name << " is copied!" << std::endl;
 }
 
 ClapTrap&	ClapTrap::operator=(ClapTrap &other) {
-	this->name = other.getName();
-	this->hitPoints = other.getHitPoints();
-	this->energyPoints = other.getEnergyPoints();
-	this->attackDamage = other.getAttackDamage();
-	std::cout << "ClapTrap " << name << " are assigned!" << std::endl;
+	if (&other != this)
+	{
+		name = other.getName();
+		hitPoints = other.getHitPoints();
+		energyPoints = other.getEnergyPoints();
+		attackDamage = other.getAttackDamage();
+		std::cout << "ClapTrap " << name << " is assigned!" << std::endl;
+	}
+	return *this;
 }
 
 void	ClapTrap::attack(const std::string& target) {
