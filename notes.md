@@ -283,6 +283,42 @@ Its purpose is to point to the current object that the member function is workin
 
 In other words: when you call a member function on an object, 'this' represents the memory address of that object.
 -------------------------------------------------------------------------------------------------------------------
+Why check for self-assignment in operator=
+
+When you write:
+
+a = b;
+
+
+the assignment operator copies data from b to a.
+
+The problem occurs when you accidentally write:
+
+a = a;
+
+
+i.e., you try to copy the object to itself.
+
+Cause of the problem
+
+If the object owns dynamic resources (like new/delete, open files, or allocated memory), copying without checking can cause:
+
+Segmentation fault – because memory may be deleted and then accessed.
+
+Memory leaks – resources may be overwritten without being properly released.
+
+Double free errors – deleting the same resource twice.
+
+Safe solution
+
+Add a self-assignment check:
+
+if (this != &other) {
+    // copy only if not self
+}
+
+
+This ensures that if a = a; occurs, the operation is skipped, preventing crashes or resource corruption.
 -------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------

@@ -26,3 +26,5 @@ Slower than fixed-point (because operations are more complex).
 
 Consumes more resources (memory, power, time).
 ------------------------------------------------------------------------------------
+https://www.puntoflotante.net/FLOATING-POINT-FORMAT-IEEE-754.htm
+------------------------------------------------------------------------------------

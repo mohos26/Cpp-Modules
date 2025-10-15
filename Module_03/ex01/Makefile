@@ -1,12 +1,12 @@
-NAME = ClapTrap
+NAME = ScavTrap
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = ClapTrap.cpp main.cpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
-%.o: %.cpp ClapTrap.hpp
+%.o: %.cpp ScavTrap.hpp ClapTrap.hpp
 	c++ $(FLAGS) -c $< -o $@
 
 all: $(NAME)

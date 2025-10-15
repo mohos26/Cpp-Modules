@@ -27,6 +27,7 @@ Fixed	&Fixed::operator=(const Fixed &other) {
 	return *this;
 }
 
+
 Fixed::~Fixed() {
 
 }
@@ -97,7 +98,7 @@ Fixed	&Fixed::max(Fixed &fixed1, Fixed &fixed2) {
 
 
 const Fixed	&Fixed::max(const Fixed &fixed1, const Fixed &fixed2) {
-	if ((Fixed)fixed2 > (Fixed)fixed1)
+	if (fixed2 > fixed1)
 		return fixed2;
 	return fixed1;
 }
@@ -110,44 +111,32 @@ std::ostream& operator<<(std::ostream &out, const Fixed &fixed) {
 
 
 bool	operator>(const Fixed &fixed1, const Fixed &fixed2) {
-	if (fixed1.getRawBits() > fixed2.getRawBits())
-		return true;
-	return false;
+	return (fixed1.getRawBits() > fixed2.getRawBits());
 }
 
 
 bool	operator>=(const Fixed &fixed1, const Fixed &fixed2) {
-	if (fixed1.getRawBits() >= fixed2.getRawBits())
-		return true;
-	return false;
+	return (fixed1.getRawBits() >= fixed2.getRawBits());
 }
 
 
 bool	operator<(const Fixed &fixed1, const Fixed &fixed2) {
-	if (fixed1.getRawBits() < fixed2.getRawBits())
-		return true;
-	return false;
+	return (fixed1.getRawBits() < fixed2.getRawBits());
 }
 
 
 bool	operator<=(const Fixed &fixed1, const Fixed &fixed2) {
-	if (fixed1.getRawBits() <= fixed2.getRawBits())
-		return true;
-	return false;
+	return (fixed1.getRawBits() <= fixed2.getRawBits());
 }
 
 
 bool	operator==(const Fixed &fixed1, const Fixed &fixed2) {
-	if (fixed1.getRawBits() == fixed2.getRawBits())
-		return true;
-	return false;
+	return (fixed1.getRawBits() == fixed2.getRawBits());
 }
 
 
 bool	operator!=(const Fixed &fixed1, const Fixed &fixed2) {
-	if (fixed1.getRawBits() != fixed2.getRawBits())
-		return true;
-	return false;
+	return (fixed1.getRawBits() != fixed2.getRawBits());
 }
 
 
